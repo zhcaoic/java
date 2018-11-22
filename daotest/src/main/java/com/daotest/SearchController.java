@@ -1,6 +1,8 @@
 package com.daotest;
 
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,9 +14,8 @@ import java.util.List;
 @Controller
 public class SearchController {
 
-    @Resource
-    private StudentService studentService;
 
+    @Resource private StudentService studentService;
 
     @RequestMapping("/search/one")
     public String searchOne(@RequestParam("name") String name,

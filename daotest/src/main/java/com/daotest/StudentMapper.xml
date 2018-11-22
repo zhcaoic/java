@@ -4,7 +4,7 @@
 <mapper namespace="com.daotest.StudentDAO">
 
     <resultMap id="StudentResultMap" type="com.daotest.Student">
-        <id column="id" property="id" javaType="int" jdbcType="INT"/>
+        <id column="id" property="id" javaType="int" jdbcType="INTEGER"/>
         <result column="student_id" property="studentId" javaType="String" jdbcType="VARCHAR"/>
         <result column="student_name" property="studentName" javaType="String" jdbcType="VARCHAR"/>
         <result column="student_address" property="studentAddress" javaType="String" jdbcType="VARCHAR"/>
