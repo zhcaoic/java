@@ -14,7 +14,13 @@ public class StudentService {
     StudentDAO studentDAO;
 
     public Student getStudentByName(String studentName) {
+
         return studentDAO.selectByName(studentName);
+    }
+
+    public List<Student> getStudents() {
+
+        return studentDAO.selectALL();
     }
 
 }

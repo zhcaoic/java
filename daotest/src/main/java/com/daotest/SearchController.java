@@ -1,8 +1,6 @@
 package com.daotest;
 
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,7 +26,7 @@ public class SearchController {
 
 
 
-    /*
+
     @RequestMapping("/search/all")
     public String searchAll(ModelMap modelMap) {
         List<Student> studentList = studentService.getStudents();
@@ -36,6 +34,6 @@ public class SearchController {
 
         return "searchall";
     }
-    */
+
 
 }
