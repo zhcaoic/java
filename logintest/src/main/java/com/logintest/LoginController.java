@@ -2,12 +2,12 @@ package com.logintest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -22,11 +22,18 @@ public class LoginController {
 
     // 主页操作
     @RequestMapping(value = "/homepage")
-    public String homePage() {
+    public String homePage(HttpServletRequest request,
+                           ModelMap modelMap) {
+        CookiesUser cookiesUser = CookiesUtil.getLoginUser(request);
+        if (cookiesUser == null || StringUtils.isEmpty(cookiesUser.getUsername())) {
+            return "homepage";
+        } else {
+            String cookieUsername = cookiesUser.getUsername();
+            User homepageUser = userService.findUserByUsername(cookieUsername);
+            modelMap.addAttribute("user", homepageUser);
 
-
-
-        return "homepage";
+            return "homepage";
+        }
     }
 
 

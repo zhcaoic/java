@@ -96,7 +96,7 @@ public class CookiesUtil {
         if (StringUtils.isEmpty(name) || StringUtils.isEmpty(path)) {
             return;
         }
-        Cookie cookie = new Cookie(name, "null");
+        Cookie cookie = new Cookie(name, "");
         cookie.setPath(path);
         cookie.setMaxAge(0);
         response.addCookie(cookie);
