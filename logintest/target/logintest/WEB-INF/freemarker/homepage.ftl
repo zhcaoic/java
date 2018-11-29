@@ -30,6 +30,18 @@
                     <p>姓名： ${user.username}</p>
                     <p>年龄： ${user.age}</p>
                     <p>国籍： ${user.address}</p>
+                    <p>修改时间：${user.updateTime}</p>
+                    <br>
+                    <div class="updateinfo">
+	                    <form method="post" action="/test/updateinfo">
+		                    <p>新用户名  ： <input type="text" name="username" ></p>
+		                    <p>新密码    ： <input type="text" name="password" ></p>
+		                    <p>确认新密码： <input type="text" name="passwordConfirm" ></p>
+		                    <p>新年龄    ： <input type="text" name="age" ></p>
+		                    <p>新国籍    ： <input type="text" name="address" ></p>
+		                    <p><input type="submit" value="提交修改" ></p>
+	                    </form>
+                    </div>
                 </#if>
             <#else>
                 <p> 暂无个人信息! </p>

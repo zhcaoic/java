@@ -25,5 +25,25 @@
         where username = #{username}
     </select>
 
+    <insert id="insertNewUser" parameterType="com.logintest.User">
+        insert
+        into loginusers
+        (username, password, create_time, update_time, age, address)
+        values (#{username}, #{password}, #{createTime}, #{updateTime}, #{age}, #{address})
+    </insert>
+
+    <select id="selectByUserId" resultMap="UserResultMap" parameterType="int">
+        select
+        <include refid="User_Columns_List" />
+        from loginusers
+        where id = #{userId}
+    </select>
+
+    <update id="updateUserInfo" parameterType="com.logintest.User">
+        update loginusers
+        set username = #{username}, password = #{password}, update_time = #{updateTime}, age = #{age}, address = #{address}
+        where id = #{id}
+    </update>
+
 
 </mapper>
