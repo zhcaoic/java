@@ -30,6 +30,8 @@
                     <p>姓名： ${user.username}</p>
                     <p>年龄： ${user.age}</p>
                     <p>国籍： ${user.address}</p>
+                    <p>创建时间: <#if user.createTime??>${user.createTime?string('yyyy-MM-dd HH:mm:ss')}<#else>null</#if>  </p>
+                    <p>更新时间: <#if user.updateTime??>${user.updateTime?string('yyyy-MM-dd HH:mm:ss')}<#else>null</#if>  </p>
                     <br>
                     <div class="updateinfo">
 	                    <form method="post" action="/test/updateinfo">
