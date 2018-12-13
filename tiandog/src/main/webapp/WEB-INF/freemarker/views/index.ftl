@@ -1,0 +1,12 @@
+<html>
+    <head>
+        <title>首页</title>
+    </head>
+    <body>
+        <div>
+	        <h2>
+		        这是网页主体。
+	        </h2>
+        </div>
+    </body>
+</html>
