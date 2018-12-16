@@ -35,7 +35,7 @@
     <!--4 自动扫描对象关系映射 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <!-- 指定要自动扫描接口的基础包，实现接口 -->
-        <property name="basePackage" value="com.logintest"></property>
+        <property name="basePackage" value="com.tiandog.DAO"></property>
     </bean>
 
     <!-- 事务管理 -->
