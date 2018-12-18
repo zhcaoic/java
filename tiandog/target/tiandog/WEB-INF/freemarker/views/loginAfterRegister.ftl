@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
-        <title>登录</title>
+	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	    <title>登录</title>
+	    <link rel="icon" href="/images/logo.ico" type="image/x-icon" />
+	    <link rel="shortcut icon" href="/images/logo.ico" type="image/x-icon" />
+	    <link rel="bookmark" href="/images/logo.ico" type="image/x-icon" />
+	    <link rel="stylesheet" href="/style/main.css" type="text/css" />
     </head>
     <body>
-        <div class="logintitle">
+        <div class="loginTitle">
             <br>
-            <h2>  注册/更新用户信息成功! 请登录： </h2>
+            <h2> 注册成功！请登录： </h2>
             <br>
         </div>
-        <div class="login">
+        <div class="loginForm">
             <form method="post" action="/tiandog/login">
                 <p> 用户名 ： <input type="text" name="username" placeholder="username"></p>
                 <p> 密码   ： <input type="text" name="password" placeholder="password"></p>

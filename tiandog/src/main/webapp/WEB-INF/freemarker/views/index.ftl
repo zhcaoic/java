@@ -1,6 +1,6 @@
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html" content="text/html; charset=utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>首页</title>
         <link rel="icon" href="/images/logo.ico" type="image/x-icon" />
         <link rel="shortcut icon" href="/images/logo.ico" type="image/x-icon" />
@@ -10,13 +10,15 @@
     <body>
         <div class="topBar">
             <#if username??>
-                <div class="associator">
+                <div class="member">
 	                <div class="leftArea">
 		                <h2>天狗网 TianDog</h2>
 	                </div>
 	                <div class="rightArea">
 		                <h2>欢迎! ${username}!</h2>
                         <a href="/tiandog/logout" > 退出登录 </a>
+		                &nbsp&nbsp&nbsp&nbsp
+                        <a href="/tiandog/userInfoDeal"> 个人中心 </a>
 	                </div>
                 </div>
             <#else>
