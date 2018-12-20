@@ -10,4 +10,6 @@ public interface UserBasicInfoDAO {
 
     void insertUserInfo(UserBasicInfo userBasicInfo);
 
+    void updateUserInfo(UserBasicInfo userBasicInfo);
+
 }

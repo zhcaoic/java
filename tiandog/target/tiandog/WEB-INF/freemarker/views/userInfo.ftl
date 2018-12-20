@@ -68,6 +68,8 @@
                     <h2> ${field}   </h2>
                 </#list>
 	            <h2>  请修改！ </h2>
+	            &nbsp&nbsp&nbsp&nbsp
+                <a href="/pages/updateUserInfo.html"> 前往修改 </a>
 	            <br>
             <#else>
                 <br>

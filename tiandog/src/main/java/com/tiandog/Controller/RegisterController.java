@@ -15,6 +15,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 @Controller
 public class RegisterController {
@@ -106,7 +107,19 @@ public class RegisterController {
     //==================================================================
     //更新个人信息
     @RequestMapping(value = "/updateUserInfoDeal")
-    public String updateUserInfo() {
+    public String updateUserInfo(@RequestParam("realName") String realName,
+                                 @RequestParam("email") String email,
+                                 @RequestParam("phone") String phone,
+                                 @RequestParam("age") String ageTemp,
+                                 @RequestParam("address") String address,
+                                 @RequestParam("occupation") String occupation,
+                                 HttpServletRequest request) throws Exception{
+
+        //从Cookies中获取当前登录用户的ID
+        CookiesUser cookiesUser = CookiesUtil.getLoginUser(request);
+        long cookieUserId = cookiesUser.getId();
+
+        userInfoService.updateUserInfo(cookieUserId, realName, email, phone, ageTemp, address, occupation);
 
         return "views/index";
     }

@@ -33,4 +33,11 @@
         values (#{userId}, #{realName}, #{email}, #{phone}, #{age}, #{address}, #{occupation}, #{updateTime})
     </insert>
 
+    <update id="updateUserInfo" parameterType="com.tiandog.Entity.UserBasicInfo">
+        update user_basic_info
+        set real_name = #{realName}, email = #{email}, phone = #{phone}, age = #{age}, address = #{address},
+        occupation = #{occupation}, update_time = #{updateTime}
+        where id = #{id}
+    </update>
+
 </mapper>
