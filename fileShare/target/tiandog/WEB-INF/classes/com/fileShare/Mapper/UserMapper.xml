@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fileShare.DAO.UserDAO">
+
+    <resultMap id="UserResultMap" type="com.fileShare.Entity.User">
+        <id column="id" property="id" javaType="long" jdbcType="BIGINT" />
+        <result column="name" property="name" javaType="String" jdbcType="VARCHAR" />
+        <result column="password" property="password" javaType="String" jdbcType="VARCHAR" />
+        <result column="login_time" property="loginTime" javaType="java.util.Date" jdbcType="DATE" />
+        <result column="create_time" property="createTime" javaType="java.util.Date" jdbcType="DATE" />
+        <result column="update_time" property="updateTime" javaType="java.util.Date" jdbcType="DATE" />
+    </resultMap>
+
+    <sql id="User_Columns_List">
+        id, name, password, login_time, create_time, update_time
+    </sql>
+
+    <insert id="insertNewUser" parameterType="com.fileShare.Entity.User">
+        insert
+        into user
+          (name, password, create_time, update_time)
+        values
+          (#{name}, #{password}, #{createTime}, #{updateTime})
+    </insert>
+
+    <select id="selectByName" resultMap="UserResultMap" parameterType="java.lang.String">
+        select
+          <include refid="User_Columns_List" />
+        from user
+        where
+          name = #{name}
+    </select>
+
+    <update id="updateLoginTime" parameterType="com.fileShare.Entity.User">
+        update user
+        set
+          login_time = #{loginTime}
+        where
+          name = #{name}
+    </update>
+
+</mapper>

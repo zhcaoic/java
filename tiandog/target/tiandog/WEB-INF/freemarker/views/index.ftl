@@ -13,6 +13,7 @@
                 <div class="member">
 	                <div class="leftArea">
 		                <h2>天狗网 TianDog</h2>
+		                <a href="/tiandog/index"> 回到首页 </a>
 	                </div>
 	                <div class="rightArea">
 		                <h2>欢迎! ${username}!</h2>
@@ -25,6 +26,7 @@
                 <div class="visitor">
 	                <div class="leftArea">
 		                <h2>天狗网 TianDog</h2>
+                        <a href="/tiandog/index"> 回到首页 </a>
 	                </div>
 	                <div class="rightArea">
 		                <h2>欢迎来到天狗网！</h2>
@@ -43,6 +45,31 @@
         <div class="br2">
             <br>
         </div>
-        <h1>这是首页主体部分。</h1>
+        <div class="indexTitle">
+	        <h1>如果不是真的喜欢，谁又会来舔狗网买东西呢？</h1>
+        </div>
+
+        <#if dealList?? && typeList??>
+            <#list typeList as tl>
+                <div class="deal">
+	                <div class="dealLeft">
+		                <a href="/tiandog/deal/${tl}/1"> <h1> ${tl} </h1> </a>
+                        <a href="/tiandog/deal/${tl}/1"> <h2> 更多 </h2> </a>
+	                </div>
+                    <#list dealList as dl>
+                        <#if dl.type == tl>
+                            <div class="dealRight">
+	                            <div class="dealImageSmall">
+		                            <a href="/tiandog/deal/${dl.id}"><img src=${dl.imageList[0].sourcePath} alt="加载失败" ></a>
+	                            </div>
+	                            <div class="dealName">
+		                            <a href="/tiandog/deal/${dl.id}"><h3> ${dl.name} </h3></a>
+	                            </div>
+                            </div>
+                        </#if>
+                    </#list>
+                </div>
+            </#list>
+        </#if>
     </body>
 </html>

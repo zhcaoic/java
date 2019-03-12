@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tiandog.DAO.DealDAO">
+
+    <!-- resultMap -->
+    <resultMap id="DealResultMap" type="com.tiandog.Entity.Deal">
+        <id column="d_id" property="id" javaType="long" jdbcType="BIGINT" />
+        <result column="deal_name" property="name" javaType="String" jdbcType="VARCHAR" />
+        <result column="price" property="price" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+        <result column="discount" property="discount" javaType="int" jdbcType="INTEGER" />
+        <result column="store_amount" property="storeAmount" javaType="int" jdbcType="INTEGER" />
+        <result column="saled_amount" property="saleAmount" javaType="int" jdbcType="INTEGER" />
+        <result column="type" property="type" javaType="String" jdbcType="VARCHAR" />
+        <result column="merchant_id" property="merchantId" javaType="long" jdbcType="BIGINT" />
+        <result column="detail_info" property="detailInfo" javaType="String" jdbcType="VARCHAR" />
+
+        <!-- 一对一查询：一个商品对应一个厂商查询结果 -->
+        <association property="merchant" javaType="com.tiandog.Entity.Merchant" autoMapping="true">
+            <id column="m_id" property="id" javaType="long" jdbcType="BIGINT" />
+            <result column="merchant_name" property="name" javaType="String" jdbcType="VARCHAR" />
+            <result column="address" property="address" javaType="String" jdbcType="VARCHAR" />
+            <result column="phone" property="phone" javaType="String" jdbcType="VARCHAR" />
+        </association>
+
+        <!-- 一对多查询：一个商品对应多个图片查询结果 -->
+        <collection property="imageList" javaType="List" ofType="com.tiandog.Entity.Image" autoMapping="true">
+            <id column="i_id" property="id" javaType="long" jdbcType="BIGINT" />
+            <result column="deal_id" property="dealId" javaType="long" jdbcType="BIGINT" />
+            <result column="size" property="size" javaType="String" jdbcType="VARCHAR" />
+            <result column="source_path" property="sourcePath" javaType="String" jdbcType="VARCHAR" />
+        </collection>
+
+    </resultMap>
+
+    <sql id="allColumnsInDealWithoutId">
+        d.deal_name, d.price, d.discount, d.store_amount, d.saled_amount, d.type, d.merchant_id, d.detail_info
+    </sql>
+
+    <sql id="allColumnsInImageWithoutId">
+        i.deal_id, i.size, i.source_path
+    </sql>
+
+    <sql id="allColumnsInMerchantWithoutId">
+        m.merchant_name, m.address, m.phone
+    </sql>
+
+
+    <select id="getDealByStoreAmountAndTypeForIndex" resultMap="DealResultMap" >
+        select
+          d1.id as d_id, d1.deal_name, d1.store_amount, d1.type,
+          i.id as i_id, <include refid="allColumnsInImageWithoutId" />
+        from
+          deal as d1 left join image as i
+          on d1.id = i.deal_id
+        where
+          (
+            select
+              count(d2.store_amount)
+            from
+              deal as d2
+            where
+              d1.type = d2.type
+              and d2.store_amount >= d1.store_amount
+          ) &lt;= 4
+        order by d1.type, d1.store_amount desc
+    </select>
+
+
+    <select id="getDealById" resultMap="DealResultMap" parameterType="java.lang.Long" >
+        select
+          m.id as m_id, <include refid="allColumnsInMerchantWithoutId" />,
+          d.id as d_id, <include refid="allColumnsInDealWithoutId" />,
+          i.id as i_id, <include refid="allColumnsInImageWithoutId" />
+        from
+          (
+            merchant as m left join deal as d
+            on m.id = d.merchant_id
+          ) left join image as i
+          on d.id = i.deal_id
+        where
+          d.id = #{id}
+    </select>
+
+
+    <select id="getDealByTypeAndPoint" resultMap="DealResultMap" >
+        select
+          d.id as d_id, d.deal_name, i.source_path
+        from
+          deal as d left join image as i
+          on d.id = i.deal_id
+        where
+          d.type = #{type}
+          and i.size = #{imageSize}
+        limit #{point}, #{dealNum};
+    </select>
+
+
+    <select id="getDealNumByType" resultType="java.lang.Integer" parameterType="java.lang.String">
+        select
+          count(distinct d.deal_name)
+        from
+          deal as d
+        where
+          d.type = #{type}
+    </select>
+
+
+</mapper>

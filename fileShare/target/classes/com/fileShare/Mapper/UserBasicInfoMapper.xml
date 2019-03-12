@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.fileShare.DAO.UserBasicInfoDAO">
+
+    <resultMap id="UserBasicInfoResultMap" type="com.fileShare.Entity.UserBasicInfo">
+        <id column="id" property="id" javaType="long" jdbcType="BIGINT" />
+        <result column="user_id" property="userId" javaType="long" jdbcType="BIGINT" />
+        <result column="real_name" property="realName" javaType="String" jdbcType="VARCHAR" />
+        <result column="email" property="email" javaType="String" jdbcType="VARCHAR" />
+        <result column="phone" property="phone" javaType="String" jdbcType="VARCHAR" />
+        <result column="age" property="age" javaType="int" jdbcType="INTEGER" />
+        <result column="address" property="address" javaType="String" jdbcType="VARCHAR" />
+        <result column="occupation" property="occupation" javaType="String" jdbcType="VARCHAR" />
+        <result column="update_time" property="updateTime" javaType="java.util.Date" jdbcType="DATE" />
+    </resultMap>
+
+    <sql id="UserBasicInfo_Columns_List">
+        id, user_id, real_name, email, phone, age, address, occupation, update_time
+    </sql>
+
+    <select id="selectUserInfoByUserId" resultMap="UserBasicInfoResultMap" parameterType="long">
+        select
+          <include refid="UserBasicInfo_Columns_List" />
+        from
+          user_basic_info
+        where
+          user_id = #{userId}
+    </select>
+
+    <insert id="insertUserInfo" parameterType="com.fileShare.Entity.UserBasicInfo">
+        insert
+        into
+          user_basic_info
+          (user_id, real_name, email, phone, age, address, occupation, update_time)
+        values
+          (#{userId}, #{realName}, #{email}, #{phone}, #{age}, #{address}, #{occupation}, #{updateTime})
+    </insert>
+
+    <update id="updateUserInfo" parameterType="com.fileShare.Entity.UserBasicInfo">
+        update
+          user_basic_info
+        set
+          real_name = #{realName}, email = #{email}, phone = #{phone}, age = #{age}, address = #{address},
+        occupation = #{occupation}, update_time = #{updateTime}
+        where
+          id = #{id}
+    </update>
+
+</mapper>

@@ -1,7 +1,7 @@
 @charset "utf-8";
 /* CSS Document */
 
-h1{background-color: lightcoral;}
+
 body{background-color: bisque;}
 
 .member{width:1000px; margin-left:auto; margin-right:auto;}
@@ -26,3 +26,24 @@ body{background-color: bisque;}
 
 .updateUserInfoTitle{width:200px; margin-left:auto; margin-right:auto;}
 .updateUserInfoForm{width:300px; margin-left:auto; margin-right:auto;}
+
+.indexTitle{background-color: lightcoral; text-align: center; vertical-align: middle;}
+
+/*
+.dealLeft{float: left; margin-left:250px; margin-right:1250px; margin-top: 100px;}
+.dealRight{float: right; margin-left:400px; margin-right:950px; margin-top: 100px;}
+*/
+
+.dealLeft{float: left; margin-top: 100px; margin-left: 250px;}
+.dealRight{float: right; margin-top: 50px; margin-right: 900px;}
+
+.dealDetailLeft{float: left; margin-top: 100px; margin-left: 250px;}
+.dealDetailRight{float: right; margin-top: 50px; margin-right: 900px;}
+
+
+.dealName{text-align: center; vertical-align: middle;}
+
+
+.dealByTypeTitle{text-align: center}
+.dealForShow{text-align: center}
+.dealByTypeBelow{text-align: center}

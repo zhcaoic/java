@@ -13,6 +13,7 @@
                     <div class="member">
                         <div class="leftArea">
                             <h2>天狗网 TianDog</h2>
+	                        <a href="/tiandog/index"> 回到首页 </a>
                         </div>
                         <div class="rightArea">
                             <h2>欢迎! ${username}!</h2>
@@ -25,6 +26,7 @@
                     <div class="visitor">
                         <div class="leftArea">
                             <h2>天狗网 TianDog</h2>
+	                        <a href="/tiandog/index"> 回到首页 </a>
                         </div>
                         <div class="rightArea">
                             <h2>欢迎来到天狗网！</h2>
