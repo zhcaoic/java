@@ -48,7 +48,7 @@ public class IndexController {
     //==================================================================
     //商品详情页面
     @RequestMapping(value = "/deal/{id}", method = RequestMethod.GET)
-    public String dealInfo(@PathVariable long id,
+    public String dealInfo(@PathVariable("id") long id,
                            ModelMap modelMap) {
         Deal deal = dealService.getDealById(id);
         modelMap.addAttribute("deal", deal);
@@ -71,9 +71,9 @@ public class IndexController {
 
     //==================================================================
     //商品分类分页展示页面
-    @RequestMapping(value = "/deal/{type}/{page}", method = RequestMethod.GET)
-    public String dealByType(@PathVariable String type,
-                             @PathVariable int page,
+    @RequestMapping(value = "/deal/{type}/{page}")
+    public String dealByType(@PathVariable("type") String type,
+                             @PathVariable("page") int page,
                              ModelMap modelMap) {
         // 每页显示商品数目
         int dealNumInOnePage = 2;
@@ -99,15 +99,10 @@ public class IndexController {
             dealList = dealService.getDealByTypeAndPage(type, page, dealNumInOnePage);
         }
 
-        // 根据当前请求页面编号计算上一页与下一页
-        int prePage = page - 1;
-        int nextPage = page + 1;
 
         modelMap.addAttribute("dealList", dealList);
         modelMap.addAttribute("type", type);
-        modelMap.addAttribute("page", page);
-        modelMap.addAttribute("prePage", prePage);
-        modelMap.addAttribute("nextPage", nextPage);
+        modelMap.addAttribute("curPage", page);
         modelMap.addAttribute("maxPage", maxPageNum);
 
         return "views/dealByType";

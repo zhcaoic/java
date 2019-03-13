@@ -54,7 +54,7 @@
                 <div class="deal">
 	                <div class="dealLeft">
 		                <a href="/tiandog/deal/${tl}/1"> <h1> ${tl} </h1> </a>
-                        <a href="/tiandog/deal/${tl}/1"> <h2> 更多 </h2> </a>
+                        <a href="/tiandog/deal/${tl}/1"> <h2> 更多>> </h2> </a>
 	                </div>
                     <#list dealList as dl>
                         <#if dl.type == tl>

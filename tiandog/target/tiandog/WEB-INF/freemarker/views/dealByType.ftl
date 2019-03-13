@@ -1,4 +1,4 @@
-<html>
+<html xmlns="http://www.w3.org/1999/html">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title> 全部${type}类商品 </title>
@@ -6,6 +6,38 @@
         <link rel="shortcut icon" href="/images/logo.ico" type="image/x-icon" />
         <link rel="bookmark" href="/images/logo.ico" type="image/x-icon" />
         <link rel="stylesheet" href="/style/main.css" type="text/css" />
+	    <script>
+		    function setPrePageLink() {
+			    var curPage = ${curPage};
+			    var prePage = curPage - 1;
+			    var prePageUrl = "/tiandog/deal/" + "${type}" + "/" + prePage;
+			    var preA = document.getElementById("prePageLink");
+			    preA.setAttribute("href", prePageUrl);
+		    }
+
+		    function setNextPageLink() {
+			    var curPage = ${curPage};
+			    var nextPage = curPage + 1;
+			    var nextPageUrl = "/tiandog/deal/" + "${type}" + "/" + nextPage;
+			    var nextA = document.getElementById("nextPageLink");
+			    nextA.setAttribute("href", nextPageUrl);
+		    }
+
+		    function setTurnToPageLink() {
+			    var page = document.getElementById("pageInput").value;
+			    if (page <= ${maxPage} && page >= 1) {
+				    var turnToPageUrl = "/tiandog/deal/" + "${type}" + "/" + page;
+				    var pageForm = document.getElementById("pageForm");
+				    pageForm.setAttribute("action", turnToPageUrl);
+			    } else {
+				    var turnToPageUrl = "/tiandog/deal/" + "${type}" + "/1";
+				    var pageForm = document.getElementById("pageForm");
+				    pageForm.setAttribute("action", turnToPageUrl);
+				    alert("超出跳转范围！");
+			    }
+		    }
+
+	    </script>
     </head>
     <body>
         <div class="topBar">
@@ -66,36 +98,27 @@
             </#if>
         </div>
         <div class="dealByTypeBelow">
-            <#if page == 1 >
-	            <h2> 第${page}页 </h2>
-                <h2> 共${maxPage}页 </h2>
-	            &nbsp&nbsp&nbsp&nbsp
-	            <a href="/tiandog/deal/${type}/1"> 首页 </a>
-	            &nbsp&nbsp&nbsp&nbsp
-                <a href="/tiandog/deal/${type}/${nextPage}"> 下一页 </a>
-	            &nbsp&nbsp&nbsp&nbsp
-                <a href="/tiandog/deal/${type}/${maxPage}"> 最后一页 </a>
-            <#elseif page == maxPage >
-                <h2> 第${page}页 </h2>
-                <h2> 共${maxPage}页 </h2>
-	            &nbsp&nbsp&nbsp&nbsp
-	            <a href="/tiandog/deal/${type}/1"> 首页 </a>
-	            &nbsp&nbsp&nbsp&nbsp
-                <a href="/tiandog/deal/${type}/${prePage}"> 上一页 </a>
-	            &nbsp&nbsp&nbsp&nbsp
-                <a href="/tiandog/deal/${type}/${maxPage}"> 最后一页 </a>
+	        <p><h2> 第${curPage}页 </h2> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <h2> 共${maxPage}页 </h2></p>
+	        <a href="/tiandog/deal/${type}/1"> 首页 </a>
+            <#if curPage == 1>
+	            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+	            <a href="" id="nextPageLink" onclick="setNextPageLink()"> 下一页 </a>
+            <#elseif curPage == maxPage>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                <a href="" id="prePageLink" onclick="setPrePageLink()"> 上一页 </a>
             <#else>
-                <h2> 第${page}页 </h2>
-                <h2> 共${maxPage}页 </h2>
-	            &nbsp&nbsp&nbsp&nbsp
-	            <a href="/tiandog/deal/${type}/1"> 首页 </a>
-	            &nbsp&nbsp&nbsp&nbsp
-                <a href="/tiandog/deal/${type}/${prePage}"> 上一页 </a>
-	            &nbsp&nbsp&nbsp&nbsp
-                <a href="/tiandog/deal/${type}/${nextPage}"> 下一页 </a>
-	            &nbsp&nbsp&nbsp&nbsp
-                <a href="/tiandog/deal/${type}/${maxPage}"> 最后一页 </a>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                <a href="" id="prePageLink" onclick="setPrePageLink()"> 上一页 </a>
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                <a href="" id="nextPageLink" onclick="setNextPageLink()"> 下一页 </a>
             </#if>
+	        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+	        <a href="/tiandog/deal/${type}/${maxPage}"> 末页 </a>
+	        <form action="" method="post" id="pageForm">
+		        <p>跳转到 ： <input type="text" id="pageInput" name="page">
+			        <input type="submit" value="Go!" onclick="setTurnToPageLink()">
+		        </p>
+	        </form>
         </div>
     </body>
 </html>
