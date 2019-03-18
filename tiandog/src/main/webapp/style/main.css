@@ -47,3 +47,5 @@ body{background-color: bisque;}
 .dealByTypeTitle{text-align: center}
 .dealForShow{text-align: center}
 .dealByTypeBelow{text-align: center}
+
+.addToCartSuccessInfo{text-align: center; font-style: oblique;}

@@ -22,10 +22,24 @@
                     inputUserId.type = "hidden";
                     inputUserId.name = "userId";
                     inputUserId.value = ${userId};
+                    // 商品名称
+                    var inputDealName = document.createElement('input');
+                    inputDealName.type = "hidden";
+                    inputDealName.name = "dealName";
+                    inputDealName.value = "${deal.name}";
+                    // 当前URL curUrl
+                    var curUrl = location.href;
+                    var inputCurUrl = document.createElement('input');
+                    inputCurUrl.type = "hidden";
+                    inputCurUrl.name = "curUrl";
+                    inputCurUrl.value = curUrl;
+
                     // 添加信息
                     var cartForm = document.getElementById("cartForm");
                     cartForm.appendChild(inputDealId);
                     cartForm.appendChild(inputUserId);
+                    cartForm.appendChild(inputDealName);
+                    cartForm.appendChild(inputCurUrl);
 
 		            return true;
                 <#else>
@@ -125,7 +139,7 @@
 	                    <form action="/tiandog/cart/add" method="post" id="cartForm">
 		                    <p>
 			                    <button class="sub" type="button" onclick="subDealNum()"> - </button>
-			                    <input type="text" id="numInput" name="dealNum" value="1" required/>
+			                    <input type="text" id="numInput" name="dealNum" value="1"/>
 			                    <button class="add" type="button" onclick="addDealNum()"> + </button>
 			                    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 			                    <input type="submit" value="立即购买" onclick="return checkIfLoginAndAddInfo()">

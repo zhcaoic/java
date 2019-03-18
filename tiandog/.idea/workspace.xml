@@ -41,9 +41,9 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="css" value="12" />
-          <entry key="ftl" value="45" />
-          <entry key="html" value="22" />
+          <entry key="css" value="13" />
+          <entry key="ftl" value="48" />
+          <entry key="html" value="23" />
           <entry key="ico" value="1" />
           <entry key="java" value="109" />
           <entry key="jpg" value="2" />
@@ -54,9 +54,9 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CSS" value="12" />
-          <entry key="FTL" value="45" />
-          <entry key="HTML" value="22" />
+          <entry key="CSS" value="13" />
+          <entry key="FTL" value="48" />
+          <entry key="HTML" value="23" />
           <entry key="Image" value="3" />
           <entry key="JAVA" value="109" />
           <entry key="Properties" value="4" />
@@ -65,10 +65,10 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="css" value="474" />
-          <entry key="ftl" value="4736" />
+          <entry key="css" value="491" />
+          <entry key="ftl" value="5252" />
           <entry key="html" value="233" />
-          <entry key="java" value="12080" />
+          <entry key="java" value="12310" />
           <entry key="properties" value="9" />
           <entry key="tld" value="17" />
           <entry key="xml" value="3970" />
@@ -76,10 +76,10 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CSS" value="474" />
-          <entry key="FTL" value="4736" />
+          <entry key="CSS" value="491" />
+          <entry key="FTL" value="5252" />
           <entry key="HTML" value="233" />
-          <entry key="JAVA" value="12080" />
+          <entry key="JAVA" value="12310" />
           <entry key="Properties" value="9" />
           <entry key="SQL" value="178" />
           <entry key="XML" value="3809" />
@@ -101,20 +101,29 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/freemarker/views/dealDetail.ftl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1428">
-              <caret line="68" column="10" lean-forward="true" selection-start-line="68" selection-start-column="10" selection-end-line="68" selection-end-column="10" />
+            <state relative-caret-position="399">
+              <caret line="28" column="57" lean-forward="true" selection-start-line="28" selection-start-column="57" selection-end-line="28" selection-end-column="57" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/freemarker/views/addToCartSuccess.ftl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="780">
+              <caret line="63" column="7" lean-forward="true" selection-start-line="63" selection-start-column="7" selection-end-line="63" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/tiandog/Controller/CartController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="654">
-              <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
+            <state relative-caret-position="286">
+              <caret line="30" column="19" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="19" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -170,7 +179,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/freemarker/layout/topbar.ftl" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/sitemesh.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/sitemesh-page.tld" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/decorators.xml" />
@@ -201,7 +209,6 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/freemarker/views/test.ftl" />
         <option value="$PROJECT_DIR$/src/main/java/com/tiandog/Service/DealService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tiandog/DAO/DealDAO.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/style/main.css" />
         <option value="$PROJECT_DIR$/src/main/java/com/tiandog/Mapper/DealMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/pages/register.html" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/freemarker/views/index.ftl" />
@@ -209,18 +216,20 @@
         <option value="$PROJECT_DIR$/src/main/java/com/tiandog/Controller/PayController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/freemarker/views/dealByType.ftl" />
         <option value="$PROJECT_DIR$/src/main/webapp/pages/login.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/freemarker/views/dealDetail.ftl" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/freemarker/error/loginError.ftl" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/freemarker/error/addToCartError.ftl" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/freemarker/error/registerError.ftl" />
         <option value="$PROJECT_DIR$/src/main/java/com/tiandog/Service/CartService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tiandog/DAO/CartDAO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/tiandog/Controller/CartController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tiandog/Mapper/CartMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/TianDog-servlet.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/tiandog/Interceptor/UserInterceptor.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tiandog/Controller/IndexController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/tiandog/Controller/LoginController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/tiandog/Controller/CartController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/style/main.css" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/freemarker/views/addToCartSuccess.ftl" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/freemarker/views/dealDetail.ftl" />
       </list>
     </option>
   </component>
@@ -467,7 +476,7 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552886875436" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552897381850" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../logintest" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -610,12 +619,12 @@
       <workItem from="1552574619499" duration="10789000" />
       <workItem from="1552654702571" duration="31000" />
       <workItem from="1552658602741" duration="1829000" />
-      <workItem from="1552825235131" duration="14918000" />
+      <workItem from="1552825235131" duration="19425000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="191641000" />
+    <option name="totallyTimeSpent" value="196148000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="24" width="1853" height="1056" extended-state="6" />
@@ -631,7 +640,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32150313" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.27453026" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -662,8 +671,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/freemarker/layout/topbar.ftl" />
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/freemarker/layout/main.ftl" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/tiandog/Interceptor/ParameterEmptyInterceptor.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/tiandog/Entity/UserBasicInfo.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -738,13 +745,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/style/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="756">
-          <caret line="36" column="62" lean-forward="true" selection-start-line="36" selection-start-column="62" selection-end-line="36" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/pages/register.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="399">
@@ -780,13 +780,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/pages/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="10" column="41" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/tiandog/Entity/Deal.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -798,13 +791,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="147">
           <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/freemarker/error/addToCartError.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="20" column="7" lean-forward="true" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
         </state>
       </provider>
     </entry>
@@ -926,13 +912,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/freemarker/views/dealDetail.ftl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1428">
-          <caret line="68" column="10" lean-forward="true" selection-start-line="68" selection-start-column="10" selection-end-line="68" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/tiandog/Interceptor/UserInterceptor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="630">
@@ -974,13 +953,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tiandog/DAO/CartDAO.java">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/freemarker/views/cartOperateInfo.ftl">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/pages/login.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="210">
+          <caret line="10" column="41" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
         </state>
       </provider>
     </entry>
@@ -994,13 +973,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/tiandog/Controller/CartController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tiandog/DAO/CartDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="654">
-          <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
+        <state relative-caret-position="168">
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/style/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="801">
+          <caret line="50" column="62" selection-start-line="50" selection-start-column="62" selection-end-line="50" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/freemarker/views/addToCartSuccess.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="780">
+          <caret line="63" column="7" lean-forward="true" selection-start-line="63" selection-start-column="7" selection-end-line="63" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/freemarker/error/addToCartError.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="20" column="7" lean-forward="true" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/tiandog/Controller/CartController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="30" column="19" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/freemarker/views/dealDetail.ftl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="28" column="57" lean-forward="true" selection-start-line="28" selection-start-column="57" selection-end-line="28" selection-end-column="57" />
         </state>
       </provider>
     </entry>
