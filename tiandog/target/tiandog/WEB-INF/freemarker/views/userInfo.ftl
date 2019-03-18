@@ -20,6 +20,8 @@
                                     <a href="/tiandog/logout" > 退出登录 </a>
                                     &nbsp&nbsp&nbsp&nbsp
                                     <a href="/tiandog/userInfoDeal"> 个人中心 </a>
+	                                &nbsp&nbsp&nbsp&nbsp
+	                                <a href="/tiandog/cart/show"> 购物车 </a>
                                 </div>
                             </div>
                         <#else>

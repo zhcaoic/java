@@ -6,12 +6,23 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.Date;
+import java.util.List;
 
 
 @Service
 public class CartService {
 
     @Resource private CartDAO cartDAO;
+
+
+    //==================================================================
+    //根据用户ID查询购物车所有商品信息
+    public List<Cart> getCartDealByUserId(long userId) {
+        List<Cart> dbCartList = cartDAO.getCartDealByUserId(userId);
+
+        return dbCartList;
+    }
+
 
     //==================================================================
     //添加商品至购物车

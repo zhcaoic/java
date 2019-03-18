@@ -7,6 +7,7 @@ import java.util.Date;
 
 public class Cart {
 
+
     @Getter @Setter private long cartId;
 
     @Getter @Setter private long cartUserId;
@@ -16,5 +17,6 @@ public class Cart {
     @Getter @Setter private int cartDealCount;
 
     @Getter @Setter private Date cartUpdateTime;
+
 
 }

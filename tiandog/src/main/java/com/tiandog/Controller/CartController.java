@@ -1,7 +1,10 @@
 package com.tiandog.Controller;
 
+import com.tiandog.Entity.Cart;
 import com.tiandog.Entity.CookiesUser;
+import com.tiandog.Entity.Deal;
 import com.tiandog.Service.CartService;
+import com.tiandog.Service.DealService;
 import com.tiandog.Util.CookiesUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -11,11 +14,57 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class CartController {
 
     @Resource private CartService cartService;
+    @Resource private DealService dealService;
+
+
+    //==================================================================
+    //购物车内容显示，仅在登录状态下可见
+    @RequestMapping(value = "/cart/show", method = RequestMethod.GET)
+    public String showCartByUser(HttpServletRequest request,
+                                 ModelMap modelMap) {
+        // 获取当前登录的用户ID
+        CookiesUser cookiesUser = CookiesUtil.getLoginUser(request);
+        long userId = cookiesUser.getId();
+        // 根据用户ID查询购物车所有商品信息
+        List<Cart> cartList = cartService.getCartDealByUserId(userId);
+        if (cartList == null) {
+            return "/views/cartShow";
+        }
+
+        // 根据商品ID获取商品详细信息
+        List<Deal> dealList = new ArrayList<>();
+        for (Cart cart : cartList) {
+            Deal deal = dealService.getDealById(cart.getCartDealId());
+            // 计算实际价格，ps:检查数量<=99且<=库存量在订单环节完成
+            if (deal.getDiscount() > 0) {
+                BigDecimal param = new BigDecimal(100);
+                BigDecimal discount = new BigDecimal(deal.getDiscount());
+                BigDecimal bd = param.subtract(discount);
+                bd = bd.divide(param);
+                BigDecimal curPrice = deal.getPrice().multiply(bd);
+                // 将实际价格赋值给deal.price属性
+                deal.setPrice(curPrice);
+            }
+            // dealList中每个deal的price属性即为折后价格
+            dealList.add(deal);
+        }
+
+        modelMap.addAttribute("cartList", cartList);
+        modelMap.addAttribute("dealList", dealList);
+
+        return "/views/cartShow";
+    }
+
+
+
 
     //==================================================================
     //添加商品至购物车

@@ -46,4 +46,14 @@
           cart_id = #{cartId}
     </update>
 
+
+    <select id="getCartDealByUserId" resultMap="CartResultMap" parameterType="java.lang.Long">
+        select
+          <include refid="cart_column_list" />
+        from
+          cart
+        where
+          cart_user_id = #{userId}
+    </select>
+
 </mapper>

@@ -82,33 +82,35 @@
     </head>
     <body>
         <div class="topBar">
-                    <#if username??>
-                        <div class="member">
-                            <div class="leftArea">
-                                <h2>天狗网 TianDog</h2>
-                                <a href="/tiandog/index"> 回到首页 </a>
-                            </div>
-                            <div class="rightArea">
-                                <h2>欢迎! ${username}!</h2>
-                                <a href="/tiandog/logout" > 退出登录 </a>
-                                &nbsp&nbsp&nbsp&nbsp
-                                <a href="/tiandog/userInfoDeal"> 个人中心 </a>
-                            </div>
-                        </div>
-                    <#else>
-                        <div class="visitor">
-                            <div class="leftArea">
-                                <h2>天狗网 TianDog</h2>
-                                <a href="/tiandog/index"> 回到首页 </a>
-                            </div>
-                            <div class="rightArea">
-                                <h2>欢迎来到天狗网！</h2>
-                                <a href="/pages/login.html" > 登录 </a>
-                                &nbsp&nbsp&nbsp&nbsp
-                                <a href="/pages/register.html" > 注册 </a>
-                            </div>
-                        </div>
-                    </#if>
+            <#if username??>
+                <div class="member">
+                    <div class="leftArea">
+                        <h2>天狗网 TianDog</h2>
+                        <a href="/tiandog/index"> 回到首页 </a>
+                    </div>
+                    <div class="rightArea">
+                        <h2>欢迎! ${username}!</h2>
+                        <a href="/tiandog/logout" > 退出登录 </a>
+                        &nbsp&nbsp&nbsp&nbsp
+                        <a href="/tiandog/userInfoDeal"> 个人中心 </a>
+                        &nbsp&nbsp&nbsp&nbsp
+                        <a href="/tiandog/cart/show"> 购物车 </a>
+                    </div>
+                </div>
+            <#else>
+                <div class="visitor">
+                    <div class="leftArea">
+                        <h2>天狗网 TianDog</h2>
+                        <a href="/tiandog/index"> 回到首页 </a>
+                    </div>
+                    <div class="rightArea">
+                        <h2>欢迎来到天狗网！</h2>
+                        <a href="/pages/login.html" > 登录 </a>
+                        &nbsp&nbsp&nbsp&nbsp
+                        <a href="/pages/register.html" > 注册 </a>
+                    </div>
+                </div>
+            </#if>
         </div>
         <div class="br1">
             <br>

@@ -4,6 +4,8 @@ import com.tiandog.Entity.Cart;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 
 @Repository
 public interface CartDAO {
@@ -14,5 +16,7 @@ public interface CartDAO {
     void updateDealCountToCart(Cart dbCart);
 
     void addNewDealToCart(Cart tempDealCart);
+
+    List<Cart> getCartDealByUserId(long userId);
 
 }
