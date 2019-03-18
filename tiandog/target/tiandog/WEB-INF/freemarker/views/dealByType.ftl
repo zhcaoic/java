@@ -114,8 +114,8 @@
             </#if>
 	        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 	        <a href="/tiandog/deal/${type}/${maxPage}"> 末页 </a>
-	        <form action="" method="post" id="pageForm">
-		        <p>跳转到 ： <input type="text" id="pageInput" name="page">
+	        <form action="" method="get" id="pageForm">
+		        <p>跳转到 ： <input type="text" id="pageInput">
 			        <input type="submit" value="Go!" onclick="setTurnToPageLink()">
 		        </p>
 	        </form>

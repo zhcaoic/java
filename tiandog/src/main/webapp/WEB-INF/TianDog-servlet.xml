@@ -19,7 +19,7 @@
 
     <mvc:interceptors>
         <mvc:interceptor>
-            <mvc:mapping path="/*" />
+            <mvc:mapping path="/**" />
             <mvc:exclude-mapping path="/logout" />
             <bean class="com.tiandog.Interceptor.UserInterceptor" />
         </mvc:interceptor>

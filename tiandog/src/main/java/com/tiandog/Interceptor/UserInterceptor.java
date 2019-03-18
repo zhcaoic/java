@@ -23,6 +23,7 @@ public class UserInterceptor implements HandlerInterceptor {
         CookiesUser cookiesUser = CookiesUtil.getLoginUser(request);
 
         if (cookiesUser != null && !StringUtils.isEmpty(cookiesUser.getName())) {
+            modelAndView.addObject("userId", cookiesUser.getId());
             modelAndView.addObject("username", cookiesUser.getName());
         }
 

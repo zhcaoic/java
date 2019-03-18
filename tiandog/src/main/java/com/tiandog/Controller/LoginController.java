@@ -23,24 +23,37 @@ public class LoginController {
 
 
     //==================================================================
-    //登录
+    // 登录
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String login(@RequestParam("username") String name,
                         @RequestParam("password") String password,
+                        @RequestParam("preUrl") String preUrl,
                         HttpServletResponse response) {
+        // 校验用户合法性
         User loginUser = userService.loginService(name, password);
         if (loginUser == null) {
             return "error/loginError";
-        } else {
-            //添加Cookies
-            CookiesUser cookiesUser = new CookiesUser();
-            cookiesUser.setId(loginUser.getId());
-            cookiesUser.setName(loginUser.getName());
-            cookiesUser.setLoginStatus(USER_LOGIN_STATUS_NORMAL);
-            CookiesUtil.setLoginUser(response, cookiesUser);
-
-            return "redirect:/tiandog/index";
         }
+
+        // 用户合法，则添加Cookies
+        CookiesUser cookiesUser = new CookiesUser();
+        cookiesUser.setId(loginUser.getId());
+        cookiesUser.setName(loginUser.getName());
+        cookiesUser.setLoginStatus(USER_LOGIN_STATUS_NORMAL);
+        CookiesUtil.setLoginUser(response, cookiesUser);
+
+        // 按preUrl(登录前页面URL)分别重定向
+        if (preUrl == null || preUrl.isEmpty()) {
+            // preUrl为null或""空字符串，重定向至首页
+            return "redirect:/tiandog/index";
+        } else if (!preUrl.substring(0, 22).equals("http://localhost:8080/")) {
+            // preUrl为其他站点URL，重定向至首页
+            return "redirect:/tiandog/index";
+        } else {
+            // preUrl为本站点URL，重定向至preUrl
+            return "redirect:" + preUrl;
+        }
+
     }
 
 
@@ -50,7 +63,7 @@ public class LoginController {
     public String logout(HttpServletResponse response) {
         CookiesUtil.removeCookies(response, CookiesUtil.USER_INFO, "/");
 
-        return "views/index";
+        return "redirect:/tiandog/index";
     }
 
 }

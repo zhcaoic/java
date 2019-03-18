@@ -6,18 +6,33 @@
 		<link rel="shortcut icon" href="/images/logo.ico" type="image/x-icon" />
 		<link rel="bookmark" href="/images/logo.ico" type="image/x-icon" />
 		<link rel="stylesheet" href="/style/main.css" type="text/css" />
+
+		<script>
+			// 将跳转登录页面前的页面URL添加至post参数列表中
+            function addPreUrlToLoginForm() {
+                var preUrl = document.referrer;
+                var urlInput = document.createElement('input');
+                urlInput.setAttribute("type", "hidden");
+                urlInput.setAttribute("name", "preUrl");
+                urlInput.setAttribute("value", preUrl);
+                var loginForm = document.getElementById("loginForm");
+                loginForm.appendChild(urlInput);
+            }
+
+		</script>
+
 	</head>
 	<body>
 		<div class="loginTitle">
 			<br>
-			<h2> 请登录： </h2>
+			<h2> 欢迎访问舔狗网！ 请登录： </h2>
 			<br>
 		</div>
 		<div class="loginForm">
-			<form method="post" action="/tiandog/login">
+			<form method="post" action="/tiandog/login" id="loginForm">
 				<p> 用户名 ： <input type="text" name="username" placeholder="username"></p>
 				<p> 密码   ： <input type="text" name="password" placeholder="password"></p>
-				<p> <input type="submit" value="登录">
+				<p> <input type="submit" value="登录" onclick="addPreUrlToLoginForm()">
 					&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 					<a href="/pages/register.html" > 注册 </a></p>
 			</form>

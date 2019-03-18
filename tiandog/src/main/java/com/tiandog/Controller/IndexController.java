@@ -71,7 +71,7 @@ public class IndexController {
 
     //==================================================================
     //商品分类分页展示页面
-    @RequestMapping(value = "/deal/{type}/{page}")
+    @RequestMapping(value = "/deal/{type}/{page}", method = RequestMethod.GET)
     public String dealByType(@PathVariable("type") String type,
                              @PathVariable("page") int page,
                              ModelMap modelMap) {

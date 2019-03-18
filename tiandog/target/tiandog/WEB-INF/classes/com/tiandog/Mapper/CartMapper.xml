@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tiandog.DAO.CartDAO">
+
+    <resultMap id="CartResultMap" type="com.tiandog.Entity.Cart">
+        <id column="cart_id" property="cartId" javaType="long" jdbcType="BIGINT" />
+        <result column="cart_user_id" property="cartUserId" javaType="long" jdbcType="BIGINT" />
+        <result column="cart_deal_id" property="cartDealId" javaType="long" jdbcType="BIGINT" />
+        <result column="cart_deal_count" property="cartDealCount" javaType="int" jdbcType="INTEGER" />
+        <result column="cart_update_time" property="cartUpdateTime" javaType="java.util.Date" jdbcType="DATE" />
+    </resultMap>
+
+
+    <sql id="cart_column_list">
+        cart_id, cart_user_id, cart_deal_id, cart_deal_count
+    </sql>
+
+
+    <select id="getCartByUserIdAndDealId" resultMap="CartResultMap" >
+        select
+          <include refid="cart_column_list" />
+        from
+          cart
+        where
+          cart_user_id = #{userId}
+          and cart_deal_id = #{dealId}
+    </select>
+
+
+    <insert id="addNewDealToCart" parameterType="com.tiandog.Entity.Cart">
+        insert
+        into cart
+          (cart_user_id, cart_deal_id, cart_deal_count, cart_update_time)
+        values
+          (#{cartUserId}, #{cartDealId}, #{cartDealCount}, #{cartUpdateTime})
+    </insert>
+
+
+    <update id="updateDealCountToCart" parameterType="com.tiandog.Entity.Cart">
+        update
+          cart
+        set
+          cart_deal_count = #{cartDealCount}, cart_update_time = #{cartUpdateTime}
+        where
+          cart_id = #{cartId}
+    </update>
+
+</mapper>
