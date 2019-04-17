@@ -6,9 +6,11 @@ public interface UserService {
 
     /**
      * 登录服务
-     * @return
+     * @param name 登录名，可以是用户编号、昵称、邮箱、手机号
+     * @param pwd 明文密码
+     * @return 查询结果
      */
-    //UserBase loginService();
+    UserBase loginService(String name, String pwd);
 
 
     /**

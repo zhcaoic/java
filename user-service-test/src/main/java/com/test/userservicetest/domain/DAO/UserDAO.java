@@ -54,7 +54,11 @@ public interface UserDAO {
     //==================================================
 
     // ====== 单个用户修改 ======
+    // 修改用户所有信息
     void updateUser(UserBase userBase);
+
+    // 修改用户登录时间
+    void updateUserLoginTime(UserBase userBase);
 
 
 

@@ -15,15 +15,40 @@ public class UserServiceImpl implements UserService{
 
     /**
      * 登录服务
-     *
-     * @return
+     * @param name 登录名，可以是用户编号、昵称、邮箱、手机号
+     * @param pwd 明文密码
+     * @return 查询结果
      */
-    /*
     @Override
-    public UserBase loginService() {
+    public UserBase loginService(String name, String pwd) {
+        // FIXME 暂时只支持用户名登录
+        // 验证数据库中该用户是否存在
+        UserBase userBaseDB = userDAO.selectUserByNickname(name);
+        if (userBaseDB == null) {
+            return null;
+        }
 
+        // 验证是否在黑名单中
+        if (userBaseDB.getLoginPermission() == 1) {
+            return null;
+        }
+
+        // 验证密码
+        if (userBaseDB.getPassword() == null || userBaseDB.getPassword().isEmpty()) {
+            return null;
+        }
+        String password = MD5.pwdTransform(pwd);
+        if (!password.equals(userBaseDB.getPassword())) {
+            return null;
+        }
+
+        // 更改登录时间
+        userBaseDB.setUserLoginTime(new Date());
+        userDAO.updateUserLoginTime(userBaseDB);
+
+        return userBaseDB;
     }
-    */
+
 
 
     /**

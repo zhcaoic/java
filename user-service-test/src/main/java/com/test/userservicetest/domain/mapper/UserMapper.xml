@@ -86,4 +86,14 @@
     </insert>
 
 
+
+    <update id="updateUserLoginTime" parameterType="com.test.userservicetest.domain.entity.UserBase">
+        UPDATE
+          user_base
+        SET
+          user_login_time = #{userLoginTime}
+        WHERE
+          nickname = #{nickname}
+    </update>
+
 </mapper>
