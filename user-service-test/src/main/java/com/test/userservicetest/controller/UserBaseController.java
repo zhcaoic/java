@@ -2,6 +2,7 @@ package com.test.userservicetest.controller;
 
 import com.test.userservicetest.domain.entity.SessionUser;
 import com.test.userservicetest.domain.entity.UserBase;
+import com.test.userservicetest.domain.util.StringRedisUtil;
 import com.test.userservicetest.domain.util.SessionUtil;
 import com.test.userservicetest.service.UserServiceImpl;
 import org.springframework.stereotype.Controller;
@@ -17,11 +18,30 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/user")
 public class UserBaseController {
 
+    // 首页访问计数器key名
+    public static final String INDEX_COUNT = "indexCount";
+
+
     @Resource UserServiceImpl userServiceImpl;
+
+    @Resource StringRedisUtil stringRedisUtil;
+
 
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)
-    public String userIndex() {
+    public String userIndex(ModelMap modelMap) {
+
+
+        // 计数首页访问次数
+        if (stringRedisUtil.getExpire(INDEX_COUNT) != -1) {
+            //FIXME key有过期时间！异常处理，日志记录
+            System.out.println("------------> key有过期时间！");
+        }
+        stringRedisUtil.incrByOne(INDEX_COUNT);
+        String indexCount = stringRedisUtil.get(INDEX_COUNT);
+
+        modelMap.addAttribute("indexCount", indexCount);
+
         return "views/index";
     }
 
@@ -61,8 +81,7 @@ public class UserBaseController {
         sessionUser.setLoginPermission(userBaseDB.getLoginPermission());
         boolean result = SessionUtil.setLoginUser(request, sessionUser);
         if (result == false) {
-            // FIXME 设置Session失败，错误代码，日志记录
-            System.out.println("=========================  设置session失败！");
+            return "views/error";
         }
 
         // 按preUrl(登录前页面URL)分别重定向
@@ -90,8 +109,7 @@ public class UserBaseController {
     public String logout(HttpServletRequest request) {
         boolean result = SessionUtil.removeSession(request);
         if (result == false) {
-            // FIXME 设置Session失效失败，错误代码，日志记录
-            System.out.println("=========================  设置session失效失败！");
+            return "views/error";
         }
         return "redirect:/user/index";
     }
@@ -138,7 +156,7 @@ public class UserBaseController {
             modelMap.addAttribute("cellphoneIsExisted", 1);
             return "views/register";
         } else {
-            return "views/index";
+            return "redirect:/user/index";
         }
 
     }

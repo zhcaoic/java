@@ -26,6 +26,7 @@
                     <a href="/test/pages/register.html"> 注册 </a>
                 </p>
             </#if>
+            <p><h2> 历史访问量：${indexCount} </h2></p>
         </div>
     </body>
 </html>

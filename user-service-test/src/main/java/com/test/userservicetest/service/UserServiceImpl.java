@@ -3,6 +3,7 @@ package com.test.userservicetest.service;
 import com.test.userservicetest.domain.DAO.UserDAO;
 import com.test.userservicetest.domain.entity.UserBase;
 import com.test.userservicetest.domain.util.MD5;
+import com.test.userservicetest.domain.util.StringRedisUtil;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -11,7 +12,15 @@ import java.util.Date;
 @Service
 public class UserServiceImpl implements UserService{
 
+
+    // 注册计数器key名
+    public static final String REGISTER_COUNT = "registerCount";
+
+
     @Resource UserDAO userDAO;
+
+    @Resource StringRedisUtil stringRedisUtil;
+
 
     /**
      * 登录服务
@@ -83,15 +92,14 @@ public class UserServiceImpl implements UserService{
         // MD5加密处理
         String password = MD5.pwdTransform(pwd);
         // 生成用户编号
-        // 生成规则：年份 + 本年度第 ？ 个注册序号，序号长为5。如 201900001。（可用Redis计数）
-        //FIXME Redis实现计数
-        // 暂时方案
-        int userNumber = 201900001;
-        userBaseTemp = userDAO.selectUserByUserNumber(userNumber);
-        while (userBaseTemp != null) {
-            userNumber ++;
-            userBaseTemp = userDAO.selectUserByUserNumber(userNumber);
+        // 生成规则：年份 + 本年度第 ？ 个注册序号，序号长为5。如 201900001。用Redis计数
+        if (stringRedisUtil.getExpire(REGISTER_COUNT) != -1) {
+            //FIXME key有过期时间！异常处理，日志记录
+            System.out.println("------------> key有过期时间！");
         }
+        stringRedisUtil.incrByOne(REGISTER_COUNT);
+        int userNumber = Integer.parseInt(stringRedisUtil.get(REGISTER_COUNT));
+
         // 赋值
         UserBase userBaseDB = new UserBase();
         userBaseDB.setUserNumber(userNumber);

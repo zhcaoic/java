@@ -33,6 +33,7 @@ public class UserInterceptor implements HandlerInterceptor {
             // FIXME 此处可能会在登录控制器中异常清除，有待测试
             modelAndView.getModel().clear();
         }
+
     }
 
     @Override
