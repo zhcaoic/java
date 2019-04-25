@@ -4,9 +4,11 @@ import com.test.userservicetest.domain.DAO.UserDAO;
 import com.test.userservicetest.domain.entity.UserBase;
 import com.test.userservicetest.domain.util.MD5;
 import com.test.userservicetest.domain.util.StringRedisUtil;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.time.Duration;
 import java.util.Date;
 
 @Service
@@ -16,11 +18,15 @@ public class UserServiceImpl implements UserService{
     // 注册计数器key名
     public static final String REGISTER_COUNT = "registerCount";
 
+    // 登录缓存key前缀
+    public static final String KEY_NAME_PREFIX = "ust_login_userBase_cache_";
+
 
     @Resource UserDAO userDAO;
 
     @Resource StringRedisUtil stringRedisUtil;
 
+    @Resource RedisTemplate redisTemplate;
 
     /**
      * 登录服务
@@ -31,10 +37,23 @@ public class UserServiceImpl implements UserService{
     @Override
     public UserBase loginService(String name, String pwd) {
         // FIXME 暂时只支持用户名登录
-        // 验证数据库中该用户是否存在
-        UserBase userBaseDB = userDAO.selectUserByNickname(name);
+
+
+        // Redis缓存查询到的用户信息
+        String key = KEY_NAME_PREFIX + name;
+        UserBase userBaseDB = (UserBase) redisTemplate.opsForValue().get(key);
         if (userBaseDB == null) {
-            return null;
+            // Redis中没有对应缓存，去MySQL中取，再存入缓存
+
+            System.out.println("--------------------------->>>>");
+
+            userBaseDB = userDAO.selectUserByNickname(name);
+            // 验证数据库中该用户是否存在
+            if (userBaseDB == null) {
+                return null;
+            }
+            // 设置key过期时间30分钟
+            redisTemplate.opsForValue().set(key, userBaseDB, Duration.ofMinutes(30));
         }
 
         // 验证是否在黑名单中
